@@ -168,7 +168,8 @@ include "code/Triangle/Infrastructure"
 project(":code/Triangle/Infrastructure").name = "Triangle-Insfrastructure"
 
 // Shestakova Svetlana
-
+include "code/binary-search-tree"
+project(":code/binary-search-tree").name = "binary-search-tree-Model"
 
 
 // Roy Viktor
