@@ -1,5 +1,6 @@
 package ru.unn.agile.BinarySearchTree.Model;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -15,9 +16,13 @@ public class BinarySearchTree {
 
     public void delete(final int key) {
         if (this.root == null) {
-            return;
+            throw new InvalidParameterException("Can not be deleted because the tree is empty");
+            //return;
         }
         Node node = this.find(this.root, key);
+        if (node == null) {
+            throw new InvalidParameterException("Can not be deleted because the node is null");
+        }
         if (node != null) {
             this.deleteNode(node);
         }
@@ -63,9 +68,14 @@ public class BinarySearchTree {
                 node.getRight().setLeft(node.getLeft());
                 node.initBy(node.getRight());
             } else {
-                node.setKey(node.getRight().getLeft().getKey());
-                node.setValue(node.getRight().getLeft().getValue());
-                this.deleteNode(node.getRight().getLeft());
+                Node minNode = node.getRight().getLeft();
+                while (minNode.getLeft() != null) {
+                    minNode = minNode.getLeft();
+                }
+                this.deleteNode(minNode);
+                node.setKey(minNode.getKey());
+                node.setValue(minNode.getValue());
+
             }
         }
     }

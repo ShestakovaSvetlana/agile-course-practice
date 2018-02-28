@@ -2,6 +2,7 @@ package ru.unn.agile.BinarySearchTree.Model;
 
 import org.junit.Test;
 
+import java.security.InvalidParameterException;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
@@ -64,17 +65,51 @@ public class BinarySearchTreeTest {
     }
 
     @Test
-    public void canDeleteNodeList() {
+    public void canInsertNodeToTheRoot() {
+        BinarySearchTree tree = new BinarySearchTree();
+        Node node = new Node(1, "test1");
+        tree.insert(node);
+        node = new Node(1, "test2");
+        tree.insert(node);
+        assertEquals("test2", tree.getRoot().getValue());
+    }
+
+    @Test
+    public void canDeleteLeftNodeList() {
         BinarySearchTree tree = createTestTree(false);
         tree.delete(4);
         assertNull(tree.getRoot().getRight().getLeft().getLeft());
     }
 
     @Test
-    public void canDeleteNodeWithOneChild() {
+    public void canDeleteRightNodeList() {
+        BinarySearchTree tree = createTestTree(false);
+        tree.delete(2);
+        assertNull(tree.getRoot().getLeft().getRight());
+    }
+
+    @Test(expected = InvalidParameterException.class)
+    public void canDeleteNodeFromAnEmptyTree() {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.delete(1);
+    }
+
+    @Test
+    public void canDeleteNodeWithOneLeftChild() {
         BinarySearchTree tree = createTestTree(false);
         tree.delete(5);
         assertEquals(4, tree.getRoot().getRight().getLeft().getKey());
+    }
+
+    @Test
+    public void canDeleteNodeWithOneRightChild() {
+        BinarySearchTree tree = createTestTree(false);
+        Node node = new Node(7, "test7");
+        tree.insert(node);
+        node = new Node(8, "test8");
+        tree.insert(node);
+        tree.delete(7);
+        assertEquals(8, tree.getRoot().getRight().getRight().getKey());
     }
 
     @Test
@@ -82,6 +117,21 @@ public class BinarySearchTreeTest {
         BinarySearchTree tree = createTestTree(false);
         tree.delete(1);
         assertEquals(2, tree.getRoot().getLeft().getKey());
+    }
+
+    @Test
+    public void canDeleteRoot() {
+        BinarySearchTree tree = createTestTree(false);
+        tree.delete(3);
+        assertEquals(4, tree.getRoot().getKey());
+    }
+
+    @Test(expected = InvalidParameterException.class)
+    public void canDeleteNullNode() {
+        BinarySearchTree tree = new BinarySearchTree();
+        Node node = new Node(1, "test");
+        tree.insert(node);
+        tree.delete(2);
     }
 
     @Test
