@@ -1,0 +1,3 @@
+dependencies {
+    compile project(':binary-search-tree-ViewModel')
+}

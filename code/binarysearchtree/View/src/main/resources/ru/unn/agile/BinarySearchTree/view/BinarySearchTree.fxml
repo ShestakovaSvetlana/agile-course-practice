@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import ru.unn.agile.BinarySearchTree.ViewModel.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.BinarySearchTree.view.BinarySearchTree">
+    <fx:define>
+        <ViewModel fx:id="viewModel" />
+    </fx:define>
+<children>
+    <VBox prefHeight="379.0" prefWidth="292.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+        <children>
+            <HBox prefHeight="225.0" prefWidth="305.0">
+                <children>
+                    <VBox prefHeight="132.0" prefWidth="130.0" spacing="10">
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                        <children>
+                            <Label text="Key" />
+                            <TextField fx:id="txtKey" disable="${viewModel.keyFieldDisabled}" />
+                            <Label text="Value" />
+                            <TextField fx:id="txtValue" disable="${viewModel.valueFieldDisabled}" />
+                            <ComboBox fx:id="cbOperation" items="${viewModel.operations}" prefWidth="204.0" />
+                            <Button fx:id="btnExec" disable="${viewModel.executeDisabled}" mnemonicParsing="false" pickOnBounds="false" prefHeight="25.0" prefWidth="110.0" text="Execute" />
+                        </children>
+                    </VBox>
+                    <VBox prefHeight="132.0" prefWidth="130.0" spacing="10">
+                        <padding>
+                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                        </padding>
+                        <children>
+                            <Label text="Result:" />
+                            <HBox>
+                                <children>
+                                    <Label text="Key: " />
+                                    <Label fx:id="lbResultKey" text="${viewModel.resultKey}" />
+                                </children>
+                            </HBox>
+                            <HBox>
+                                <children>
+                                    <Label text="Value: " />
+                                    <Label fx:id="lbResultValue" text="${viewModel.resultValue}" />
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </children>
+            </HBox>
+            <HBox prefHeight="96.0" prefWidth="272.0">
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+                <children>
+                    <Label fx:id="lbStatus" text="${viewModel.status}" />
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+</children>
+</AnchorPane>
