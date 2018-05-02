@@ -1,0 +1,3 @@
+dependencies {
+    compile project(':vectors3d-Model')
+}

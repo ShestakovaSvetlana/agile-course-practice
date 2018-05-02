@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.control.Button?>
+
+<TitledPane fx:id="vectorView" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.unn.agile.Vectors3d.view.VectorView">
+    <collapsible>false</collapsible>
+    <HBox fillHeight="true">
+        <spacing>10</spacing>
+        <children>
+            <Label text="X:" />
+            <TextField fx:id="xTextField" prefWidth="100.0" HBox.hgrow="ALWAYS"/>
+            <Label text="Y:" />
+            <TextField fx:id="yTextField" prefWidth="100.0" HBox.hgrow="ALWAYS"/>
+            <Label text="Z:" />
+            <TextField fx:id="zTextField" prefWidth="100.0" HBox.hgrow="ALWAYS"/>
+            <Region prefWidth="50.0" />
+            <Button text="Normalize" fx:id="normalizeButton"/>
+        </children>
+    </HBox>
+</TitledPane>
